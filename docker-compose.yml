@@ -1,12 +1,22 @@
 volumes:
+  ckan_app:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ./ckan/ckan_app
   ckan_storage:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ./ckan/ckan_storage
   pg_data:
   solr_data:
   pip_cache:
   site_packages:
 
 services:
-
   nginx:
     build:
       context: nginx/
@@ -18,6 +28,7 @@ services:
       ckan:
         condition: service_healthy
     ports:
+      - "0.0.0.0:${NGINX_PORT_HOST}:${NGINX_PORT}"
       - "0.0.0.0:${NGINX_SSLPORT_HOST}:${NGINX_SSLPORT}"
     
   ckan:
@@ -40,7 +51,10 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+    ports:
+      - "0.0.0.0:${CKAN_PORT}:5000"
     volumes:
+      - ckan_app:/srv/app
       - ckan_storage:/var/lib/ckan
       - pip_cache:/root/.cache/pip
       - site_packages:/usr/lib/python3.10/site-packages

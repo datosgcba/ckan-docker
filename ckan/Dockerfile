@@ -1,4 +1,4 @@
-FROM ckan/ckan-base:2.10.4
+FROM ckan/ckan-base:2.9.8
 
 # Install any extensions needed by your CKAN instance
 # See Dockerfile.dev for more details and examples
@@ -17,3 +17,10 @@ RUN for d in $APP_DIR/patches/*; do \
             done ; \
         fi ; \
     done
+
+# Instala plugins de badata
+RUN pip install -e "git+https://github.com/davidread/ckanext-hierarchy.git#egg=ckanext-hierarchy" && \
+    pip install -e "git+https://github.com/ckan/ckanext-harvest.git#egg=ckanext-harvest" && \
+    pip install -r src/ckanext-harvest/pip-requirements.txt && \
+    pip install -e "git+https://github.com/datosgobar/ckanext-seriestiempoarexplorer.git#egg=ckanext-seriestiempoarexplorer" && \
+    pip install -e "git+https://github.com/datosgcba/ckanext-gobar-theme.git@latest#egg=ckanext-gobar_theme"
