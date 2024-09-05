@@ -1,0 +1,10 @@
+# Usar la imagen base de CKAN
+FROM ckan/ckan-base:2.10.4
+
+# Borrar la ruta existente
+RUN rm -rf /srv/app
+
+# Copiar versión local de /srv/app
+COPY ./ckan_app /srv/app
+
+# Mantener el resto de configuraciones necesarias para CKAN

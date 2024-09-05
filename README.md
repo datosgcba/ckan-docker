@@ -6,6 +6,12 @@ Utilizamos docker como compilador com la intención de facilitar el despliegue d
     docker compose build
     docker compose up -d
 
+Restore:
+
+    docker exec -it <db-container-name> bash
+    cd docker-entrypoint-initdb.d/
+    psql -U ckandbuser -d ckandb -f ckan.psql
+    psql -U ckandbuser -d datastore -f datastore.psql
 
 Esta rama en particular usa una [imagen personalizada](https://hub.docker.com/repository/docker/ddecampos/ckan-2.10.4/general) de ckan-2.10.4, la cual contiene modificaciones para ser adaptable al plugin de BA Data ([ckanext-gobar-theme](https://github.com/datosgcba/ckanext-gobar-theme/tree/develop)).
 

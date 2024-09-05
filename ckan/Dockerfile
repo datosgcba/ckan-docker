@@ -1,4 +1,4 @@
-FROM ddecampos/ckan-2.10.4:badata-1.0
+FROM ddecampos/ckan-badata:2.10.4
 
 # Install any extensions needed by your CKAN instance
 # See Dockerfile.dev for more details and examples
@@ -22,4 +22,6 @@ RUN for d in $APP_DIR/patches/*; do \
 RUN pip install -e "git+https://github.com/davidread/ckanext-hierarchy.git#egg=ckanext-hierarchy" && \
     pip install -e "git+https://github.com/datosgcba/ckanext-gobar-theme.git@ckan-2.10.4#egg=ckanext-gobar_theme" && \
     pip install -e "git+https://github.com/keitaroinc/ckanext-visualize.git#egg=ckanext-visualize" && \
-    pip install -r src/ckanext-visualize/requirements.txt
+    pip install -e "git+https://github.com/DataShades/ckanext-oidc-pkce.git#egg=ckanext-oidc_pkce" && \
+    pip install -r src/ckanext-visualize/requirements.txt && \
+    pip install routes
