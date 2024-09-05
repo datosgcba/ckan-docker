@@ -13,6 +13,11 @@ Restore:
     psql -U ckandbuser -d ckandb -f ckan.sql
     psql -U ckandbuser -d datastore -f datastore.sql
 
+Actualizar ckan db:
+
+    docker exec -it <ckan-container-name> bash
+    ckan search-index rebuild
+
 Esta rama en particular usa una [imagen personalizada](https://hub.docker.com/repository/docker/ddecampos/ckan-2.10.4/general) de ckan-2.10.4, la cual contiene modificaciones para ser adaptable al plugin de BA Data ([ckanext-gobar-theme](https://github.com/datosgcba/ckanext-gobar-theme/tree/develop)).
 
 A continuación se describen las modificaciones realizadas en la imagen base de [ckan 2.10.4](https://hub.docker.com/layers/ckan/ckan-base/2.10.4/images/sha256-3728a4d27fc18dfb41216423d220f67c492dc125c98c3ca99d29dc670885056f?context=explore):
