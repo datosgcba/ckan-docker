@@ -1,4 +1,4 @@
-FROM ddecampos/ckan-badata:2.10.4
+FROM ddecampos/ckan-badata:2.11
 
 # Install any extensions needed by your CKAN instance
 # See Dockerfile.dev for more details and examples
