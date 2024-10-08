@@ -20,7 +20,7 @@ RUN for d in $APP_DIR/patches/*; do \
 
 # Instala plugins y dependencias
 RUN pip install -e "git+https://github.com/davidread/ckanext-hierarchy.git#egg=ckanext-hierarchy" && \
-    pip install -e "git+https://github.com/datosgcba/ckanext-gobar-theme.git@ckan-2.10.4#egg=ckanext-gobar_theme" && \
+    pip install -e "git+https://github.com/datosgcba/ckanext-gobar-theme.git@ckan-2.11#egg=ckanext-gobar_theme" && \
     pip install -e "git+https://github.com/keitaroinc/ckanext-visualize.git#egg=ckanext-visualize" && \
     pip install -e "git+https://github.com/DataShades/ckanext-oidc-pkce.git#egg=ckanext-oidc_pkce" && \
     pip install -r src/ckanext-visualize/requirements.txt && \
